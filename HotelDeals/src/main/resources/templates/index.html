@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layouts/default}">
+	layout:decorate="~{layout/default}">
 
 
 <head>
@@ -9,151 +9,130 @@
 
 <body>
 	<div class="container" layout:fragment="content">
+		<form action="#" th:action="@{/search}" th:object="${searchCriteria}"
+			method="post">
+			<div class="row" style="margin-top: 5px;">
+				<div class="col">
+					<div class="form-group row">
+						<label for="destinationName" class="col-3 col-form-label">destinationName</label>
+						<div class="col-5">
+							<input class="form-control" type="text" th:field="*{destinationName}">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="minTripStartDate" class="col-3 col-form-label">minTripStartDate</label>
+						<div class="col-5">
+							<input class="form-control" type="date" th:field="*{minTripStartDate}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="minStarRating" class="col-3 col-form-label">minStarRating</label>
+						<div class="col-5">
+							<input class="form-control" type="number" value=""	th:field="*{minStarRating}" min="1">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="minTotalRate" class="col-3 col-form-label">minTotalRate</label>
+						<div class="col-5">
+							<input class="form-control" type="number" value=""
+								th:field="*{minTotalRate}" min="1">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="minGuestRating" class="col-3 col-form-label">minGuestRating</label>
+						<div class="col-5">
+							<input class="form-control" type="number" value=""
+								th:field="*{minGuestRating}" min="1">
+						</div>
+					</div>
+
+				</div>
+				<div class="col">
+					<div class="form-group row" style="margin-top: 13px;">&nbsp;</div>
+
+
+					<div class="form-group row">
+						<label for="maxTripStartDate" class="col-3 col-form-label">maxTripStartDate</label>
+						<div class="col-5">
+							<input class="form-control" type="date" value=""
+								th:field="*{maxTripStartDate}">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="maxStarRating" class="col-3 col-form-label">maxStarRating</label>
+						<div class="col-5">
+							<input class="form-control" type="number" value="" min="1"
+								th:field="*{maxStarRating}">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="maxTotalRate" class="col-3 col-form-label">maxTotalRate</label>
+						<div class="col-5">
+							<input class="form-control" type="number" value=""
+								th:field="*{maxTotalRate}" min="1">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="maxGuestRating" class="col-3 col-form-label">maxGuestRating</label>
+						<div class="col-5">
+							<input class="form-control" type="number" value=""
+								th:field="*{maxGuestRating}" min="1">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<button id="btnSearch" type="submit" class="btn btn-primary"
+						th:text="#{hotel.search}">Search</button>
+				</div>
+			</div>
+		</form>
 
 		<div class="row">
 			<section class="col-9" th:each="hotel : ${hotelDeal.offers.hotel}">
-				<article style="margin-bottom: 5px; padding: 16px;border: 1px solid #c6c6c6;margin: 16px 0">
+				<article
+					style="margin-bottom: 2px; padding: 5px; border: 1px solid #c6c6c6; margin: 5px 0">
 					<div class="row">
 						<div class="col-2">
-							<img th:src="${hotel.hotelInfo.hotelImageUrl}" class="img-thumbnail"/>
+							<img th:src="${hotel.hotelInfo.hotelImageUrl}"
+								class="img-thumbnail" />
 						</div>
 
 						<div class="col-5">
-							<h2 style="font-size: 20px;" th:text="${hotel.hotelInfo.hotelName}"></h2>
-															  
-							<label style="color: grey;" th:text="'Located in &nbsp;'+${hotel.hotelInfo.hotelLongDestination} + ',&nbsp;' +${hotel.hotelInfo.hotelStreetAddress}"></label>
-							<label style="color: grey;" th:text="'Offer for &nbsp;'+${hotel.offerDateRange.lengthOfStay} + '&nbsp;day(s) starting from &nbsp;'+${hotel.offerDateRange.travelStartDate} + ',&nbsp; till&nbsp;' +${hotel.offerDateRange.travelEndDate}"></label>
-							
+							<h2 style="font-size: 20px;"
+								th:text="${hotel.hotelInfo.hotelName}"></h2>
+
+							<label style="color: grey;"
+								th:text="'Located in &nbsp;'+${hotel.hotelInfo.hotelLongDestination} + ',&nbsp;' +${hotel.hotelInfo.hotelStreetAddress}"></label>
+							<label style="color: grey;"
+								th:text="'Offer for &nbsp;'+${hotel.offerDateRange.lengthOfStay} + '&nbsp;day(s) starting from &nbsp;'+${hotel.offerDateRange.travelStartDate} + ',&nbsp; till&nbsp;' +${hotel.offerDateRange.travelEndDate}"></label>
+
 						</div>
 
 						<div class="col-3">
 							<div>
-								<span>
-									<b> <del style="font-size: 16px; color: grey;" th:text="${hotel.hotelPricingInfo.originalPricePerNight}"></del>
-										&nbsp;&nbsp; <label style="font-size: 16px; color: black;" th:text="${hotel.hotelPricingInfo.averagePriceValue} +'&nbsp;'+ ${hotel.hotelInfo.hotelCountryCode}"></label>
-										<br/>
-										<label style="color:red;" th:text="'Savings&nbsp;' + ${hotel.hotelPricingInfo.percentSavings} + '&nbsp;%'"></label>
-									</b>
-									
+								<span> <b> <del style="font-size: 16px; color: grey;"
+											th:text="${hotel.hotelPricingInfo.originalPricePerNight}"></del>
+										&nbsp;&nbsp; <label style="font-size: 16px; color: black;"
+										th:text="${hotel.hotelPricingInfo.averagePriceValue} +'&nbsp;'+ ${hotel.hotelInfo.hotelCountryCode}"></label>
+										<br /> <label style="color: red;"
+										th:text="'Savings&nbsp;' + ${hotel.hotelPricingInfo.percentSavings} + '&nbsp;%'"></label>
+								</b>
+
 								</span>
-								
+
 							</div>
 							<div style="color: cornflowerblue; size: 12px;">
-								<label th:text="${hotel.hotelInfo.hotelReviewTotal} + '&nbsp;reviews'"></label>
+								<label
+									th:text="${hotel.hotelInfo.hotelReviewTotal} + '&nbsp;reviews'"></label>
 							</div>
 						</div>
 					</div>
 				</article>
 			</section>
-			
-		</div>
 
-
-
-
-		<div class="modal fade" id="searchNewHotelModal" tabindex="-1"
-			role="dialog" aria-labelledby="newHotelModalLabel">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title" id="newHotelModalLabel"
-							th:text="#{hotel.search}">Search</h4>
-
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-
-					<div class="modal-body">
-						<div class="form-group row">
-							<label for="destinationName" class="col-2 col-form-label">destinationName</label>
-							<div class="col-10">
-								<input class="form-control" type="text" value=""
-									id="destinationName">
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="minTripStartDate" class="col-2 col-form-label">minTripStartDate</label>
-							<div class="col-10">
-								<input class="form-control" type="date" value=""
-									id="minTripStartDate">
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="maxTripStartDate" class="col-2 col-form-label">maxTripStartDate</label>
-							<div class="col-10">
-								<input class="form-control" type="date" value=""
-									id="maxTripStartDate">
-							</div>
-						</div>
-
-
-
-						<div class="form-group row">
-							<label for="minStarRating" class="col-2 col-form-label">minStarRating</label>
-							<div class="col-10">
-								<input class="form-control" type="number" value=""
-									id="minStarRating">
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="maxStarRating" class="col-2 col-form-label">maxStarRating</label>
-							<div class="col-10">
-								<input class="form-control" type="number" value=""
-									id="maxStarRating">
-							</div>
-						</div>
-
-
-						<div class="form-group row">
-							<label for="minTotalRate" class="col-2 col-form-label">minTotalRate</label>
-							<div class="col-10">
-								<input class="form-control" type="number" value=""
-									id="minTotalRate">
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="maxTotalRate" class="col-2 col-form-label">maxTotalRate</label>
-							<div class="col-10">
-								<input class="form-control" type="number" value=""
-									id="maxTotalRate">
-							</div>
-						</div>
-
-
-
-						<div class="form-group row">
-							<label for="minGuestRating" class="col-2 col-form-label">minGuestRating</label>
-							<div class="col-10">
-								<input class="form-control" type="number" value=""
-									id="minGuestRating">
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="maxGuestRating" class="col-2 col-form-label">maxGuestRating</label>
-							<div class="col-10">
-								<input class="form-control" type="number" value=""
-									id="maxGuestRating">
-							</div>
-						</div>
-
-					</div>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal"
-							th:text="#{hotel.close}">Close</button>
-						<button id="btnSearch" type="button" class="btn btn-primary"
-							th:text="#{hotel.search}">Search</button>
-					</div>
-
-				</div>
-			</div>
 		</div>
 	</div>
 
