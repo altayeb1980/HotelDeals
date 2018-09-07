@@ -10,31 +10,33 @@ import com.epam.model.HotelDeal;
 import com.epam.model.SearchCriteria;
 
 @Service
-public class DefaultHotelService implements HotelService{
+public class DefaultHotelService implements HotelService {
 
 	@Value("${hotel.deals.url}")
 	private String hotelDealsUrl;
-	
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
-	
+
 	@Override
 	public HotelDeal findAll() {
-		return restTemplate.getForObject(
-				hotelDealsUrl, HotelDeal.class);
+		return restTemplate.getForObject(hotelDealsUrl, HotelDeal.class);
 	}
-
 
 	@Override
 	public HotelDeal findByCriteria(SearchCriteria searchCriteria) {
-		UriComponentsBuilder builder = UriComponentsBuilder
-			    .fromUriString(hotelDealsUrl)
-			    // Add query parameter
-			    .queryParam("destinationName", searchCriteria.getDestinationName());
-		
-		
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(hotelDealsUrl)
+				// Add query parameter
+				.queryParam("destinationName", searchCriteria.getDestinationName())
+				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
+				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
+				.queryParam("minStarRating", searchCriteria.getMinStarRating())
+				.queryParam("maxStarRating", searchCriteria.getMaxStarRating())
+				.queryParam("minGuestRating", searchCriteria.getMinGuestRating())
+				.queryParam("maxGuestRating", searchCriteria.getMaxGuestRating())
+				.queryParam("minTotalRate", searchCriteria.getMinTotalRate())
+				.queryParam("maxTotalRate", searchCriteria.getMaxTotalRate());
+
 		HotelDeal hotelDeal = restTemplate.getForObject(builder.toUriString(), HotelDeal.class);
 		return hotelDeal;
 	}
