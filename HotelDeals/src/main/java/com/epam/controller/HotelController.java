@@ -16,8 +16,8 @@ public class HotelController {
 	@GetMapping("/")
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("index");
+		modelAndView.addObject(hotelService.findAll());
 		return modelAndView;
 	}
-	
 	
 }
