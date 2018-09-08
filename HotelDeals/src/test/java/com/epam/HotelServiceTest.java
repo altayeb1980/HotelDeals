@@ -1,5 +1,10 @@
 package com.epam;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.FieldPosition;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -32,30 +37,47 @@ import com.epam.service.HotelService;
 @RunWith(MockitoJUnitRunner.class)
 public class HotelServiceTest {
 
+	private static final String ENDPOINT_URL = "https://offersvc.expedia.com/offers/v2/getOffers?scenario=deal-finder&page=foo&uid=foo&productType=Hotel";
+
 	@Mock
 	private HotelService hotelService;
 
 	@Mock
 	private RestTemplate restTemplate;
 
+	@Mock
+	private SimpleDateFormat formatter;
+
 	@InjectMocks
 	private DefaultHotelService defaultHotelService;
 
-	private UriComponentsBuilder builder;
-
 	@Before
 	public void setup() {
-		defaultHotelService.setHotelDealsUrl(
-				"https://offersvc.expedia.com/offers/v2/getOffers?scenario=deal-finder&page=foo&uid=foo&productType=Hotel");
-		builder = UriComponentsBuilder.fromUriString(defaultHotelService.getHotelDealsUrl());
+		defaultHotelService.setHotelDealsUrl(ENDPOINT_URL);
+		Mockito.when(formatter.format(Mockito.any(Date.class), Mockito.any(StringBuffer.class),
+				Mockito.any(FieldPosition.class))).thenReturn(new StringBuffer("2017-02-06"));
 	}
+	
+	
+	@Test
+	public void testUriWithCorrectParam() throws UnsupportedEncodingException {
+		SearchCriteria searchCriteria = new SearchCriteria();
+		searchCriteria.setDestinationName("wadi_rum");
+		searchCriteria.setLengthOfStay("1");
+		searchCriteria.setMinTripStartDate(new Date());
+		String actualUriWithParam = defaultHotelService.buildUriWithNeededParams(searchCriteria);
+		String expectedUriWithParam = new StringBuilder(ENDPOINT_URL).append("&destinationName="+searchCriteria.getDestinationName()).append("&lengthOfStay="+searchCriteria.getLengthOfStay()).append("&minTripStartDate="+formatter.format(searchCriteria.getMinTripStartDate())).toString();
+		Assert.assertEquals(expectedUriWithParam, actualUriWithParam);
+	}
+	
 
 	@Test
 	public void testWhenNoSearchCriteria() {
 		HotelDeal hotelDeal = buildHotelDeal();
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 		HotelDeal expectedHotelDeal = defaultHotelService.findAll();
-		Mockito.verify(restTemplate).getForObject(defaultHotelService.getHotelDealsUrl(), HotelDeal.class);
+		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(ENDPOINT_URL);
+		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
 		Assert.assertEquals("26811791", expectedHotelDeal.getOffers().getHotel().get(0).getHotelInfo().getHotelId());
 	}
@@ -66,21 +88,12 @@ public class HotelServiceTest {
 		searchCriteria.setMinTripStartDate(new Date());
 		HotelDeal hotelDeal = buildHotelDeal();
 
-		builder.queryParam("destinationName", searchCriteria.getDestinationName())
-				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
-				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
-				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
-				.queryParam("minStarRating", searchCriteria.getMinStarRating())
-				.queryParam("maxStarRating", searchCriteria.getMaxStarRating())
-				.queryParam("minGuestRating", searchCriteria.getMinGuestRating())
-				.queryParam("maxGuestRating", searchCriteria.getMaxGuestRating())
-				.queryParam("minTotalRate", searchCriteria.getMinTotalRate())
-				.queryParam("maxTotalRate", searchCriteria.getMaxTotalRate());
+		String uriWithParam = defaultHotelService.buildUriWithNeededParams(searchCriteria);
 
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 
 		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
-		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
+		Mockito.verify(restTemplate).getForObject(uriWithParam, HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
 		Assert.assertEquals("26811791", expectedHotelDeal.getOffers().getHotel().get(0).getHotelInfo().getHotelId());
@@ -92,21 +105,12 @@ public class HotelServiceTest {
 		searchCriteria.setDestinationName("Wadi Rum");
 		HotelDeal hotelDeal = buildHotelDeal();
 
-		builder.queryParam("destinationName", searchCriteria.getDestinationName())
-				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
-				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
-				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
-				.queryParam("minStarRating", searchCriteria.getMinStarRating())
-				.queryParam("maxStarRating", searchCriteria.getMaxStarRating())
-				.queryParam("minGuestRating", searchCriteria.getMinGuestRating())
-				.queryParam("maxGuestRating", searchCriteria.getMaxGuestRating())
-				.queryParam("minTotalRate", searchCriteria.getMinTotalRate())
-				.queryParam("maxTotalRate", searchCriteria.getMaxTotalRate());
+		String uriWithParam = defaultHotelService.buildUriWithNeededParams(searchCriteria);
 
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 
 		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
-		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
+		Mockito.verify(restTemplate).getForObject(uriWithParam, HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
 		Assert.assertEquals("Wadi Rum",
@@ -119,21 +123,12 @@ public class HotelServiceTest {
 		searchCriteria.setLengthOfStay("2");
 		HotelDeal hotelDeal = buildHotelDeal();
 
-		builder.queryParam("destinationName", searchCriteria.getDestinationName())
-				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
-				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
-				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
-				.queryParam("minStarRating", searchCriteria.getMinStarRating())
-				.queryParam("maxStarRating", searchCriteria.getMaxStarRating())
-				.queryParam("minGuestRating", searchCriteria.getMinGuestRating())
-				.queryParam("maxGuestRating", searchCriteria.getMaxGuestRating())
-				.queryParam("minTotalRate", searchCriteria.getMinTotalRate())
-				.queryParam("maxTotalRate", searchCriteria.getMaxTotalRate());
+		String uriWithParam = defaultHotelService.buildUriWithNeededParams(searchCriteria);
 
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 
 		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
-		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
+		Mockito.verify(restTemplate).getForObject(uriWithParam, HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
 		Assert.assertEquals("2",
