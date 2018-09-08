@@ -12,7 +12,7 @@ import com.epam.model.SearchCriteria;
 @Service
 public class DefaultHotelService implements HotelService {
 
-	@Value("${hotel.deals.url}")
+	//@Value("${hotel.deals.url}")
 	private String hotelDealsUrl;
 
 	@Autowired
@@ -20,7 +20,8 @@ public class DefaultHotelService implements HotelService {
 
 	@Override
 	public HotelDeal findAll() {
-		return restTemplate.getForObject(hotelDealsUrl, HotelDeal.class);
+		HotelDeal hotelDeal = restTemplate.getForObject(hotelDealsUrl, HotelDeal.class);
+		return hotelDeal;
 	}
 
 	@Override
@@ -40,5 +41,15 @@ public class DefaultHotelService implements HotelService {
 		HotelDeal hotelDeal = restTemplate.getForObject(builder.toUriString(), HotelDeal.class);
 		return hotelDeal;
 	}
+
+	public void setHotelDealsUrl(String hotelDealsUrl) {
+		this.hotelDealsUrl = hotelDealsUrl;
+	}
+
+	public String getHotelDealsUrl() {
+		return hotelDealsUrl;
+	}
+	
+	
 
 }
