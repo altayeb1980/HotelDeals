@@ -8,6 +8,9 @@ $("#mainForm").submit(function() {
 	var minStarRating = $("#minStarRating").val();
 	var maxStarRating = $("#maxStarRating").val();
 
+    var minTripStartDate = $("#minTripStartDate").val();
+    var maxTripStartDate = $("#maxTripStartDate").val();
+	
 	if (minStarRating != null && maxStarRating != null) {
 		if (minStarRating > maxStarRating) {
 			alert("maxStarRating should be greater than minStarRating");
@@ -28,6 +31,13 @@ $("#mainForm").submit(function() {
 			return false;
 		}
 	}
+	
+	if(minTripStartDate != null && maxTripStartDate != null){
+		if(Date.parse(minTripStartDate) > Date.parse(maxTripStartDate)){
+			alert("maxTripStartDate should be greater than minTripStartDate");
+			return false;
+		}
+    }
 	return true;
 });
 
@@ -41,4 +51,4 @@ $('#destinationName').on(
 				event.preventDefault();
 				return false;
 			}
-		});
+});
