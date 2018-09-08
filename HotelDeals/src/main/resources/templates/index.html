@@ -10,26 +10,32 @@
 <body>
 	<div class="container" layout:fragment="content">
 		<form action="#" th:action="@{/search}" th:object="${searchCriteria}"
-			method="post">
+			role="form" method="post" id="mainForm">
 			<div class="row" style="margin-top: 5px;">
 				<div class="col">
 					<div class="form-group row">
 						<label for="destinationName" class="col-3 col-form-label">destinationName</label>
 						<div class="col-5">
-							<input class="form-control" type="text" th:field="*{destinationName}">
+							<input class="form-control" type="text"
+								th:field="*{destinationName}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="minTripStartDate" class="col-3 col-form-label">minTripStartDate</label>
 						<div class="col-5">
-							<input class="form-control" type="date" th:field="*{minTripStartDate}">
+							<input class="form-control" type="date"
+								th:field="*{minTripStartDate}" data-range="#maxTripStartDate">
+							<div class="help-block with-errors"></div>
 						</div>
+
 					</div>
 
 					<div class="form-group row">
 						<label for="minStarRating" class="col-3 col-form-label">minStarRating</label>
 						<div class="col-5">
-							<input class="form-control" type="number" value=""	th:field="*{minStarRating}" min="1">
+							<input class="form-control" type="number" value=""
+								th:field="*{minStarRating}" min="1">
+							<div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -37,13 +43,16 @@
 						<div class="col-5">
 							<input class="form-control" type="number" value=""
 								th:field="*{minTotalRate}" min="1">
+							<div class="help-block with-errors"></div>
 						</div>
+
 					</div>
 					<div class="form-group row">
 						<label for="minGuestRating" class="col-3 col-form-label">minGuestRating</label>
 						<div class="col-5">
 							<input class="form-control" type="number" value=""
 								th:field="*{minGuestRating}" min="1">
+							<div class="help-block with-errors"></div>
 						</div>
 					</div>
 
@@ -64,6 +73,7 @@
 						<div class="col-5">
 							<input class="form-control" type="number" value="" min="1"
 								th:field="*{maxStarRating}">
+							<div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -71,6 +81,7 @@
 						<div class="col-5">
 							<input class="form-control" type="number" value=""
 								th:field="*{maxTotalRate}" min="1">
+							<div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -78,6 +89,8 @@
 						<div class="col-5">
 							<input class="form-control" type="number" value=""
 								th:field="*{maxGuestRating}" min="1">
+							<div class="help-block with-errors"></div>
+
 						</div>
 					</div>
 				</div>
@@ -135,7 +148,6 @@
 
 		</div>
 	</div>
-
 </body>
 </html>
 
