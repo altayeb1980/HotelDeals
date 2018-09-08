@@ -16,7 +16,6 @@ deploy:
      file: target/bin/binary.json
      user: altayeb1980
      key: $BINTRAY_API_KEY
-
     
 
 
