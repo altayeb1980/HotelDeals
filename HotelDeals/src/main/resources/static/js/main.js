@@ -1,4 +1,5 @@
 $("#mainForm").submit(function() {
+	
 	var minTotalRate = $("#minTotalRate").val();
 	var maxTotalRate = $("#maxTotalRate").val();
 

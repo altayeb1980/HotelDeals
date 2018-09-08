@@ -12,7 +12,7 @@ import com.epam.model.SearchCriteria;
 @Service
 public class DefaultHotelService implements HotelService {
 
-	//@Value("${hotel.deals.url}")
+	@Value("${hotel.deals.url}")
 	private String hotelDealsUrl;
 
 	@Autowired
@@ -29,6 +29,7 @@ public class DefaultHotelService implements HotelService {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(hotelDealsUrl)
 				// Add query parameter
 				.queryParam("destinationName", searchCriteria.getDestinationName())
+				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
 				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
 				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
 				.queryParam("minStarRating", searchCriteria.getMinStarRating())

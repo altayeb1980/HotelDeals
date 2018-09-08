@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SearchCriteria {
-	
+
 	private String destinationName;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date minTripStartDate;
@@ -17,6 +17,7 @@ public class SearchCriteria {
 	private String maxTotalRate;
 	private String minGuestRating;
 	private String maxGuestRating;
+	private String lengthOfStay;
 
 	public String getDestinationName() {
 		return destinationName;
@@ -88,6 +89,14 @@ public class SearchCriteria {
 
 	public void setMaxGuestRating(String maxGuestRating) {
 		this.maxGuestRating = maxGuestRating;
+	}
+
+	public String getLengthOfStay() {
+		return lengthOfStay;
+	}
+
+	public void setLengthOfStay(String lengthOfStay) {
+		this.lengthOfStay = lengthOfStay;
 	}
 
 }

@@ -8,145 +8,164 @@
 </head>
 
 <body>
-	<div class="container" layout:fragment="content">
+	<div class="container-fluid" layout:fragment="content">
 		<form action="#" th:action="@{/search}" th:object="${searchCriteria}"
 			role="form" method="post" id="mainForm">
-			<div class="row" style="margin-top: 5px;">
-				<div class="col">
-					<div class="form-group row">
-						<label for="destinationName" class="col-3 col-form-label">destinationName</label>
-						<div class="col-5">
-							<input class="form-control" type="text"
-								th:field="*{destinationName}">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="minTripStartDate" class="col-3 col-form-label">minTripStartDate</label>
-						<div class="col-5">
-							<input class="form-control" type="date"
-								th:field="*{minTripStartDate}">
-							<div class="help-block with-errors"></div>
-						</div>
-
-					</div>
-
-					<div class="form-group row">
-						<label for="minStarRating" class="col-3 col-form-label">minStarRating</label>
-						<div class="col-5">
-							<input class="form-control" type="number" value=""
-								th:field="*{minStarRating}" min="1">
-							<div class="help-block with-errors"></div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="minTotalRate" class="col-3 col-form-label">minTotalRate</label>
-						<div class="col-5">
-							<input class="form-control" type="number" value=""
-								th:field="*{minTotalRate}" min="1">
-							<div class="help-block with-errors"></div>
-						</div>
-
-					</div>
-					<div class="form-group row">
-						<label for="minGuestRating" class="col-3 col-form-label">minGuestRating</label>
-						<div class="col-5">
-							<input class="form-control" type="number" value=""
-								th:field="*{minGuestRating}" min="1">
-							<div class="help-block with-errors"></div>
-						</div>
-					</div>
-
-				</div>
-				<div class="col">
-					<div class="form-group row" style="margin-top: 13px;">&nbsp;</div>
-
-
-					<div class="form-group row">
-						<label for="maxTripStartDate" class="col-3 col-form-label">maxTripStartDate</label>
-						<div class="col-5">
-							<input class="form-control" type="date" value=""
-								th:field="*{maxTripStartDate}">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="maxStarRating" class="col-3 col-form-label">maxStarRating</label>
-						<div class="col-5">
-							<input class="form-control" type="number" value="" min="1"
-								th:field="*{maxStarRating}">
-							<div class="help-block with-errors"></div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="maxTotalRate" class="col-3 col-form-label">maxTotalRate</label>
-						<div class="col-5">
-							<input class="form-control" type="number" value=""
-								th:field="*{maxTotalRate}" min="1">
-							<div class="help-block with-errors"></div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="maxGuestRating" class="col-3 col-form-label">maxGuestRating</label>
-						<div class="col-5">
-							<input class="form-control" type="number" value=""
-								th:field="*{maxGuestRating}" min="1">
-							<div class="help-block with-errors"></div>
-
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="row">
-				<div class="col">
-					<button id="btnSearch" type="submit" class="btn btn-primary"
-						th:text="#{hotel.search}">Search</button>
+				<!-- Left Side -->
+				<div class="col-4">
+					<div class="row">
+						<div class="col">
+							<div class="form-group row">
+								<div class="col">
+									<label for="destinationName" class="control-label">destinationName</label>
+									<input class="form-control" type="text"
+										th:field="*{destinationName}" placeholder="destinationName">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col">
+									<label for="minTripStartDate" class="control-label">minTripStartDate</label>
+									<input class="form-control" type="date"
+										th:field="*{minTripStartDate}">
+									<div class="help-block with-errors"></div>
+								</div>
+
+							</div>
+							<div class="form-group row">
+								<div class="col">
+									<label for="minStarRating" class="control-label">minStarRating</label>
+									<input class="form-control" type="number" value=""
+										th:field="*{minStarRating}" min="1">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col">
+									<label for="minTotalRate" class="control-label">minTotalRate</label>
+									<input class="form-control" type="number" value=""
+										th:field="*{minTotalRate}" min="1">
+									<div class="help-block with-errors"></div>
+								</div>
+
+							</div>
+							<div class="form-group row">
+
+								<div class="col">
+									<label for="minGuestRating" class="control-label">minGuestRating</label>
+									<input class="form-control" type="number" value=""
+										th:field="*{minGuestRating}" min="1">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+
+
+
+						</div>
+
+
+						<div class="col">
+							<div class="form-group row">
+								<div class="col">
+									<label for="lengthOfStay" class="control-label">lengthOfStay</label>
+									<input class="form-control" type="number" min="1"
+										th:field="*{lengthOfStay}" placeholder="lengthOfStay">
+								</div>
+							</div>
+							<div class="form-group row">
+
+								<div class="col">
+									<label for="maxTripStartDate" class="control-label">maxTripStartDate</label>
+									<input class="form-control" type="date" value=""
+										th:field="*{maxTripStartDate}">
+								</div>
+							</div>
+							<div class="form-group row">
+
+								<div class="col">
+									<label for="maxStarRating" class="control-label">maxStarRating</label>
+									<input class="form-control" type="number" value="" min="1"
+										th:field="*{maxStarRating}">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="form-group row">
+
+								<div class="col">
+									<label for="maxTotalRate" class="control-label">maxTotalRate</label>
+									<input class="form-control" type="number" value=""
+										th:field="*{maxTotalRate}" min="1">
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="form-group row">
+
+								<div class="col">
+									<label for="maxGuestRating" class="control-label">maxGuestRating</label>
+									<input class="form-control" type="number" value=""
+										th:field="*{maxGuestRating}" min="1">
+									<div class="help-block with-errors"></div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col text-center">
+						<button id="btnSearch" type="submit" class="btn btn-primary"
+							th:text="#{hotel.search}">Search</button>
+					</div>
+				</div>
+				<div class="col-8">
+					<div class="row">
+						<section class="col-9" th:each="hotel : ${hotelDeal.offers.hotel}">
+							<article
+								style="margin-bottom: 2px; padding: 5px; border: 1px solid #c6c6c6; margin: 5px 0">
+								<div class="row">
+									<div class="col-2">
+										<img th:src="${hotel.hotelInfo.hotelImageUrl}"
+											class="img-thumbnail" />
+									</div>
+
+									<div class="col-5">
+										<h2 style="font-size: 20px;"
+											th:text="${hotel.hotelInfo.hotelName}"></h2>
+
+										<label style="color: grey;"
+											th:text="'Located in &nbsp;'+${hotel.hotelInfo.hotelLongDestination} + ',&nbsp;' +${hotel.hotelInfo.hotelStreetAddress}"></label>
+										<label style="color: grey;"
+											th:text="'Offer for &nbsp;'+${hotel.offerDateRange.lengthOfStay} + '&nbsp;day(s) starting from &nbsp;'+${hotel.offerDateRange.travelStartDate} + ',&nbsp; till&nbsp;' +${hotel.offerDateRange.travelEndDate}"></label>
+
+									</div>
+
+									<div class="col-3">
+										<div>
+											<span> <b> <del
+														style="font-size: 16px; color: grey;"
+														th:text="${hotel.hotelPricingInfo.originalPricePerNight}"></del>
+													&nbsp;&nbsp; <label style="font-size: 16px; color: black;"
+													th:text="${hotel.hotelPricingInfo.averagePriceValue} +'&nbsp;'+ ${hotel.hotelInfo.hotelCountryCode}"></label>
+													<br /> <label style="color: red;"
+													th:text="'Savings&nbsp;' + ${hotel.hotelPricingInfo.percentSavings} + '&nbsp;%'"></label>
+											</b>
+
+											</span>
+
+										</div>
+										<div style="color: cornflowerblue; size: 12px;">
+											<label
+												th:text="${hotel.hotelInfo.hotelReviewTotal} + '&nbsp;reviews'"></label>
+										</div>
+									</div>
+								</div>
+							</article>
+						</section>
+					</div>
+
 				</div>
 			</div>
 		</form>
-
-		<div class="row">
-			<section class="col-9" th:each="hotel : ${hotelDeal.offers.hotel}">
-				<article
-					style="margin-bottom: 2px; padding: 5px; border: 1px solid #c6c6c6; margin: 5px 0">
-					<div class="row">
-						<div class="col-2">
-							<img th:src="${hotel.hotelInfo.hotelImageUrl}"
-								class="img-thumbnail" />
-						</div>
-
-						<div class="col-5">
-							<h2 style="font-size: 20px;"
-								th:text="${hotel.hotelInfo.hotelName}"></h2>
-
-							<label style="color: grey;"
-								th:text="'Located in &nbsp;'+${hotel.hotelInfo.hotelLongDestination} + ',&nbsp;' +${hotel.hotelInfo.hotelStreetAddress}"></label>
-							<label style="color: grey;"
-								th:text="'Offer for &nbsp;'+${hotel.offerDateRange.lengthOfStay} + '&nbsp;day(s) starting from &nbsp;'+${hotel.offerDateRange.travelStartDate} + ',&nbsp; till&nbsp;' +${hotel.offerDateRange.travelEndDate}"></label>
-
-						</div>
-
-						<div class="col-3">
-							<div>
-								<span> <b> <del style="font-size: 16px; color: grey;"
-											th:text="${hotel.hotelPricingInfo.originalPricePerNight}"></del>
-										&nbsp;&nbsp; <label style="font-size: 16px; color: black;"
-										th:text="${hotel.hotelPricingInfo.averagePriceValue} +'&nbsp;'+ ${hotel.hotelInfo.hotelCountryCode}"></label>
-										<br /> <label style="color: red;"
-										th:text="'Savings&nbsp;' + ${hotel.hotelPricingInfo.percentSavings} + '&nbsp;%'"></label>
-								</b>
-
-								</span>
-
-							</div>
-							<div style="color: cornflowerblue; size: 12px;">
-								<label
-									th:text="${hotel.hotelInfo.hotelReviewTotal} + '&nbsp;reviews'"></label>
-							</div>
-						</div>
-					</div>
-				</article>
-			</section>
-
-		</div>
 	</div>
 </body>
 </html>

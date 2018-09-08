@@ -67,6 +67,7 @@ public class HotelServiceTest {
 		HotelDeal hotelDeal = buildHotelDeal();
 
 		builder.queryParam("destinationName", searchCriteria.getDestinationName())
+				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
 				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
 				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
 				.queryParam("minStarRating", searchCriteria.getMinStarRating())
@@ -84,9 +85,7 @@ public class HotelServiceTest {
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
 		Assert.assertEquals("26811791", expectedHotelDeal.getOffers().getHotel().get(0).getHotelInfo().getHotelId());
 	}
-	
 
-	
 	@Test
 	public void testWhenDestinationNameInSearchCriteria() {
 		SearchCriteria searchCriteria = new SearchCriteria();
@@ -94,6 +93,7 @@ public class HotelServiceTest {
 		HotelDeal hotelDeal = buildHotelDeal();
 
 		builder.queryParam("destinationName", searchCriteria.getDestinationName())
+				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
 				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
 				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
 				.queryParam("minStarRating", searchCriteria.getMinStarRating())
@@ -109,11 +109,36 @@ public class HotelServiceTest {
 		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
-		Assert.assertEquals("Wadi Rum", expectedHotelDeal.getOffers().getHotel().get(0).getDestination().getShortName());
+		Assert.assertEquals("Wadi Rum",
+				expectedHotelDeal.getOffers().getHotel().get(0).getDestination().getShortName());
 	}
 
-	
-	
+	@Test
+	public void testWhenLengthOfStayInSearchCriteria() {
+		SearchCriteria searchCriteria = new SearchCriteria();
+		searchCriteria.setLengthOfStay("2");
+		HotelDeal hotelDeal = buildHotelDeal();
+
+		builder.queryParam("destinationName", searchCriteria.getDestinationName())
+				.queryParam("lengthOfStay", searchCriteria.getLengthOfStay())
+				.queryParam("minTripStartDate", searchCriteria.getMinTripStartDate())
+				.queryParam("maxTripStartDate", searchCriteria.getMaxTripStartDate())
+				.queryParam("minStarRating", searchCriteria.getMinStarRating())
+				.queryParam("maxStarRating", searchCriteria.getMaxStarRating())
+				.queryParam("minGuestRating", searchCriteria.getMinGuestRating())
+				.queryParam("maxGuestRating", searchCriteria.getMaxGuestRating())
+				.queryParam("minTotalRate", searchCriteria.getMinTotalRate())
+				.queryParam("maxTotalRate", searchCriteria.getMaxTotalRate());
+
+		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
+
+		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
+		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
+
+		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
+		Assert.assertEquals("2",
+				String.valueOf(expectedHotelDeal.getOffers().getHotel().get(0).getOfferDateRange().getLengthOfStay()));
+	}
 
 	private HotelDeal buildHotelDeal() {
 		HotelDeal hotelDeal = new HotelDeal();
@@ -154,7 +179,7 @@ public class HotelServiceTest {
 
 	private OfferDateRange buildOfferDateRange() {
 		OfferDateRange offerDateRange = new OfferDateRange();
-		offerDateRange.setLengthOfStay(1);
+		offerDateRange.setLengthOfStay(2);
 		offerDateRange.setTravelEndDate(Arrays.asList(2018, 9, 8));
 		offerDateRange.setTravelStartDate(Arrays.asList(2018, 9, 7));
 		return offerDateRange;
