@@ -16,6 +16,10 @@ deploy:
      user: altayeb1980
      key: $BINTRAY_API_KEY
     
-
+# Build all branches, *including* gh-pages:
+branches:
+  only:
+  - gh-pages
+  - /.*/
 
 
