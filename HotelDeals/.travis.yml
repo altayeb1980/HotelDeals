@@ -1,4 +1,23 @@
 language: java
+jdk: oraclejdk8
+install: true
+script: 
+  -	./mvnw clean install
+  - bash <(curl -s https://codecov.io/bash)
+cache:
+	directories:
+	-$HOME/.m2
+deploy:
+  -
+     on:
+       branch: release
+     provider:binary
+     skip_cleanup: true
+     file: target/bin/binary.json
+     user: altayeb1980
+     key: $BINTRAY_API_KEY
 
-jdk:
-    - oraclejdk8
+    
+
+
+
