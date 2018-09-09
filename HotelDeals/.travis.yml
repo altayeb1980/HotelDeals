@@ -5,7 +5,8 @@ install: true
 script: mvn install
 
 branches:
-  only: master
+  except:
+    - gh-pages
 
 #after_success:
 #- pwd
