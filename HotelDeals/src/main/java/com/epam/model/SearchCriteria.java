@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class SearchCriteria {
 
 	private String destinationName;
+	private String destinationCity;
+	private String regionId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date minTripStartDate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -29,6 +31,22 @@ public class SearchCriteria {
 
 	public Date getMinTripStartDate() {
 		return minTripStartDate;
+	}
+
+	public String getDestinationCity() {
+		return destinationCity;
+	}
+
+	public void setDestinationCity(String destinationCity) {
+		this.destinationCity = destinationCity;
+	}
+
+	public String getRegionId() {
+		return regionId;
+	}
+
+	public void setRegionId(String regionId) {
+		this.regionId = regionId;
 	}
 
 	public void setMinTripStartDate(Date minTripStartDate) {

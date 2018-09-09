@@ -53,3 +53,24 @@ $('#destinationName').on(
 				return false;
 			}
 });
+$('#destinationCity').on(
+		'keypress',
+		function(event) {
+			var regex = new RegExp("^[0-9a-zA-Z_ \b]+$");
+			var key = String.fromCharCode(!event.charCode ? event.which
+					: event.charCode);
+			if (!regex.test(key)) {
+				event.preventDefault();
+				return false;
+			}
+});
+
+
+$("#btnClear").click(function(){
+	$('#mainForm').trigger("reset");
+});
+
+
+function openHotelSite(url){
+	window.open(decodeURIComponent(url));
+}
