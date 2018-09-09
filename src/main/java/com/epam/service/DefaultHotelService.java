@@ -23,6 +23,8 @@ public class DefaultHotelService implements HotelService {
 
 
 	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	
+	
 
 	@Override
 	public HotelDeal findHotels(SearchCriteria searchCriteria) {

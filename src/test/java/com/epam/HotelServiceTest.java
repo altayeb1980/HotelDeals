@@ -1,8 +1,6 @@
 package com.epam;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.FieldPosition;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -17,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.epam.model.Destination;
 import com.epam.model.Hotel;
@@ -70,17 +67,6 @@ public class HotelServiceTest {
 		Assert.assertEquals(expectedUriWithParam, actualUriWithParam);
 	}
 	
-
-//	@Test
-//	public void testWhenNoSearchCriteria() {
-//		HotelDeal hotelDeal = buildHotelDeal();
-//		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
-//		HotelDeal expectedHotelDeal = defaultHotelService.findAll();
-//		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(ENDPOINT_URL);
-//		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
-//		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
-//		Assert.assertEquals("26811791", expectedHotelDeal.getOffers().getHotel().get(0).getHotelInfo().getHotelId());
-//	}
 
 	@Test
 	public void testWhenMinTripStartDateInSearchCriteria() {
