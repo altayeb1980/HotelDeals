@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: HotelDeals
+Implementation-Version: 1.0.0
+Built-By: Al-Tayeb_Saadeh
+Implementation-Vendor-Id: com.epam
+Build-Jdk: 1.8.0_151
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/HotelDeals
+Created-By: Maven Integration for Eclipse
+

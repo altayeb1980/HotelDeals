@@ -1,0 +1,17 @@
+com\epam\model\Hotel.class
+com\epam\model\HotelInfo.class
+com\epam\Application.class
+com\epam\model\HotelUrls.class
+com\epam\service\HotelService.class
+com\epam\model\HotelPricingInfo.class
+com\epam\model\Persona.class
+com\epam\model\HotelDeal.class
+com\epam\service\DefaultHotelService.class
+com\epam\model\SearchCriteria.class
+com\epam\model\OfferDateRange.class
+com\epam\model\OfferInfo.class
+com\epam\model\UserInfo.class
+com\epam\model\Destination.class
+com\epam\model\HotelSearchCriteria.class
+com\epam\controller\HotelController.class
+com\epam\model\Offers.class
