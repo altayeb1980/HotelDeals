@@ -71,16 +71,16 @@ public class HotelServiceTest {
 	}
 	
 
-	@Test
-	public void testWhenNoSearchCriteria() {
-		HotelDeal hotelDeal = buildHotelDeal();
-		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
-		HotelDeal expectedHotelDeal = defaultHotelService.findAll();
-		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(ENDPOINT_URL);
-		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
-		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
-		Assert.assertEquals("26811791", expectedHotelDeal.getOffers().getHotel().get(0).getHotelInfo().getHotelId());
-	}
+//	@Test
+//	public void testWhenNoSearchCriteria() {
+//		HotelDeal hotelDeal = buildHotelDeal();
+//		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
+//		HotelDeal expectedHotelDeal = defaultHotelService.findAll();
+//		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(ENDPOINT_URL);
+//		Mockito.verify(restTemplate).getForObject(builder.toUriString(), HotelDeal.class);
+//		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
+//		Assert.assertEquals("26811791", expectedHotelDeal.getOffers().getHotel().get(0).getHotelInfo().getHotelId());
+//	}
 
 	@Test
 	public void testWhenMinTripStartDateInSearchCriteria() {

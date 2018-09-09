@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+
+
+
+<div layout:fragment="content">
+	<div
+		class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+		<div class="lh-100">
+			<h6 class="mb-0 text-white lh-100">Search</h6>
+		</div>
+	</div>
+
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+		<form action="#" th:action="@{/search}" th:object="${searchCriteria}"
+			role="form" method="post" id="mainForm">
+
+			<div class="form-row mt-4">
+				<div class="col-sm-6 pb-3">
+					<label for="destinationName">Destination Name</label> <input
+						type="text" class="form-control" th:field="*{destinationName}">
+				</div>
+				<div class="col-sm-6 pb-3">
+					<label for="destinationCity">Destination City </label> <input
+						type="text" class="form-control" th:field="*{destinationCity}">
+				</div>
+
+				<div class="col-sm-6 pb-3">
+					<label for="regionId">Region Id</label> <input type="number" min="1"
+						class="form-control" th:field="*{regionId}">
+				</div>
+
+				<div class="col-sm-6 pb-3">
+					<label for="lengthOfStay">Length Of Stay</label> <input type="number" min="1"
+						class="form-control" th:field="*{lengthOfStay}">
+				</div>
+
+
+				<div class="col-sm-6 pb-3">
+					<label for="minTripStartDate">Minimum Trip Start Date</label> <input
+						type="date" class="form-control" th:field="*{minTripStartDate}">
+				</div>
+				<div class="col-sm-6 pb-3">
+					<label for="minTripStartDate">Maximum Trip Start Date</label> <input
+						type="date" class="form-control" th:field="*{maxTripStartDate}">
+				</div>
+				<div class="col-sm-6 pb-3">
+					<label for="minStarRating">Minimum Star Rating</label> <input
+						class="form-control" type="number" value=""
+						th:field="*{minStarRating}" min="1">
+				</div>
+				<div class="col-sm-6 pb-3">
+					<label for="maxStarRating">Maximum Star Rating</label> <input
+						class="form-control" type="number" value=""
+						th:field="*{maxStarRating}" min="1">
+				</div>
+
+
+				<div class="col-sm-6 pb-3">
+					<label for="minGuestRating">Minimum Guest Rating</label> <input
+						class="form-control" type="number" value=""
+						th:field="*{minGuestRating}" min="1">
+				</div>
+				<div class="col-sm-6 pb-3">
+					<label for="maxGuestRating">Maximum Guest Rating</label> <input
+						class="form-control" type="number" value=""
+						th:field="*{maxGuestRating}" min="1">
+				</div>
+
+				<div class="col-sm-6 pb-3">
+					<label for="minTotalRate">Minimum Total Rate</label> <input
+						class="form-control" type="number" value=""
+						th:field="*{minTotalRate}" min="1">
+				</div>
+				<div class="col-sm-6 pb-3">
+					<label for="maxTotalRate">Maximum Total Rate</label> <input
+						class="form-control" type="number" value=""
+						th:field="*{maxTotalRate}" min="1">
+				</div>
+
+				<div class="col-sm text-center">
+					<button id="btnSearch" type="submit" class="btn btn-primary">Search</button><span>&nbsp;</span>
+					<button id="btnClear" type="button" class="btn btn-primary ">Clear</button>
+				</div>
+
+			</div>
+		</form>
+
+	</div>
+
+</div>
