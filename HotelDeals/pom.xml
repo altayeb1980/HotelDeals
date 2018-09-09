@@ -5,12 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.epam</groupId>
-	<artifactId>HotelDeals</artifactId>
+	<artifactId>hotel-deals</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>HotelDeals</name>
-	<description>Demo project for Spring Boot</description>
+	<name>hotel-deals</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -100,4 +99,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<description>Hotel Deals Application based on Spring Boot, bootstrap 4,thymeleaf</description>
 </project>
