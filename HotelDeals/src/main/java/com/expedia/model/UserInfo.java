@@ -1,4 +1,4 @@
-package com.epam.model;
+package com.expedia.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,27 +16,45 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "personaType"
+    "persona",
+    "userId"
 })
-public class Persona {
+public class UserInfo {
 
-    @JsonProperty("personaType")
-    private String personaType;
+    @JsonProperty("persona")
+    private Persona persona;
+    @JsonProperty("userId")
+    private String userId;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("personaType")
-    public String getPersonaType() {
-        return personaType;
+    @JsonProperty("persona")
+    public Persona getPersona() {
+        return persona;
     }
 
-    @JsonProperty("personaType")
-    public void setPersonaType(String personaType) {
-        this.personaType = personaType;
+    @JsonProperty("persona")
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
-    public Persona withPersonaType(String personaType) {
-        this.personaType = personaType;
+    public UserInfo withPersona(Persona persona) {
+        this.persona = persona;
+        return this;
+    }
+
+    @JsonProperty("userId")
+    public String getUserId() {
+        return userId;
+    }
+
+    @JsonProperty("userId")
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public UserInfo withUserId(String userId) {
+        this.userId = userId;
         return this;
     }
 
@@ -55,14 +73,14 @@ public class Persona {
         this.additionalProperties.put(name, value);
     }
 
-    public Persona withAdditionalProperty(String name, Object value) {
+    public UserInfo withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(personaType).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(persona).append(userId).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -70,11 +88,11 @@ public class Persona {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Persona) == false) {
+        if ((other instanceof UserInfo) == false) {
             return false;
         }
-        Persona rhs = ((Persona) other);
-        return new EqualsBuilder().append(personaType, rhs.personaType).append(additionalProperties, rhs.additionalProperties).isEquals();
+        UserInfo rhs = ((UserInfo) other);
+        return new EqualsBuilder().append(persona, rhs.persona).append(userId, rhs.userId).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

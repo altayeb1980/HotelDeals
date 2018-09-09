@@ -1,4 +1,4 @@
-package com.epam.controller;
+package com.expedia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.epam.model.HotelDeal;
-import com.epam.model.SearchCriteria;
-import com.epam.service.HotelService;
+import com.expedia.model.HotelDeal;
+import com.expedia.model.SearchCriteria;
+import com.expedia.service.HotelService;
 
 
 @Controller

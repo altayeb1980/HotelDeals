@@ -1,7 +1,7 @@
-package com.epam.service;
+package com.expedia.service;
 
-import com.epam.model.HotelDeal;
-import com.epam.model.SearchCriteria;
+import com.expedia.model.HotelDeal;
+import com.expedia.model.SearchCriteria;
 
 @FunctionalInterface
 public interface HotelService {

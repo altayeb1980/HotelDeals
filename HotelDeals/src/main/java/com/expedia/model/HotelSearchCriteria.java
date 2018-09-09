@@ -1,4 +1,4 @@
-package com.epam.model;
+package com.expedia.model;
 
 public class HotelSearchCriteria {
 

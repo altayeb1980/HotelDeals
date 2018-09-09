@@ -1,4 +1,4 @@
-package com.epam.model;
+package com.expedia.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

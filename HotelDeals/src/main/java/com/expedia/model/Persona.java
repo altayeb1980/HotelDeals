@@ -1,8 +1,6 @@
-package com.epam.model;
+package com.expedia.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -18,27 +16,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Hotel"
+    "personaType"
 })
-public class Offers {
+public class Persona {
 
-    @JsonProperty("Hotel")
-    private List<Hotel> hotel = new ArrayList<Hotel>();
+    @JsonProperty("personaType")
+    private String personaType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("Hotel")
-    public List<Hotel> getHotel() {
-        return hotel;
+    @JsonProperty("personaType")
+    public String getPersonaType() {
+        return personaType;
     }
 
-    @JsonProperty("Hotel")
-    public void setHotel(List<Hotel> hotel) {
-        this.hotel = hotel;
+    @JsonProperty("personaType")
+    public void setPersonaType(String personaType) {
+        this.personaType = personaType;
     }
 
-    public Offers withHotel(List<Hotel> hotel) {
-        this.hotel = hotel;
+    public Persona withPersonaType(String personaType) {
+        this.personaType = personaType;
         return this;
     }
 
@@ -57,14 +55,14 @@ public class Offers {
         this.additionalProperties.put(name, value);
     }
 
-    public Offers withAdditionalProperty(String name, Object value) {
+    public Persona withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(hotel).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(personaType).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -72,11 +70,11 @@ public class Offers {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Offers) == false) {
+        if ((other instanceof Persona) == false) {
             return false;
         }
-        Offers rhs = ((Offers) other);
-        return new EqualsBuilder().append(hotel, rhs.hotel).append(additionalProperties, rhs.additionalProperties).isEquals();
+        Persona rhs = ((Persona) other);
+        return new EqualsBuilder().append(personaType, rhs.personaType).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

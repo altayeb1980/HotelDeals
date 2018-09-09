@@ -1,4 +1,4 @@
-package com.epam.service;
+package com.expedia.service;
 
 import java.text.SimpleDateFormat;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.epam.model.HotelDeal;
-import com.epam.model.SearchCriteria;
+import com.expedia.model.HotelDeal;
+import com.expedia.model.SearchCriteria;
 
 @Service
 public class DefaultHotelService implements HotelService {
@@ -21,24 +21,29 @@ public class DefaultHotelService implements HotelService {
 	@Autowired
 	private RestTemplate restTemplate;
 
-
 	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	
-	
 
 	@Override
 	public HotelDeal findHotels(SearchCriteria searchCriteria) {
-		buildUriWithNeededParams(searchCriteria);
 		String uriWithParam = buildUriWithNeededParams(searchCriteria);
 		HotelDeal hotelDeal = restTemplate.getForObject(uriWithParam, HotelDeal.class);
 		return hotelDeal;
 	}
 
-	public String buildUriWithNeededParams(SearchCriteria searchCriteria) {
+	private String buildUriWithNeededParams(SearchCriteria searchCriteria) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(hotelDealsUrl);
 		if (StringUtils.isNotEmpty(searchCriteria.getDestinationName())) {
 			builder.queryParam("destinationName", searchCriteria.getDestinationName());
 		}
+
+		if (StringUtils.isNotEmpty(searchCriteria.getDestinationCity())) {
+			builder.queryParam("destinationCity", searchCriteria.getDestinationCity());
+		}
+
+		if (StringUtils.isNotEmpty(searchCriteria.getRegionId())) {
+			builder.queryParam("regionId", searchCriteria.getRegionId());
+		}
+
 		if (StringUtils.isNotEmpty(searchCriteria.getLengthOfStay())) {
 			builder.queryParam("lengthOfStay", searchCriteria.getLengthOfStay());
 		}
@@ -67,9 +72,5 @@ public class DefaultHotelService implements HotelService {
 			builder.queryParam("maxTotalRate", searchCriteria.getMaxTotalRate());
 		}
 		return builder.toUriString();
-	}
-
-	public void setHotelDealsUrl(String hotelDealsUrl) {
-		this.hotelDealsUrl = hotelDealsUrl;
 	}
 }

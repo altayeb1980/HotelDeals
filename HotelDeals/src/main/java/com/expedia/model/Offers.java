@@ -1,6 +1,8 @@
-package com.epam.model;
+package com.expedia.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -16,45 +18,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "persona",
-    "userId"
+    "Hotel"
 })
-public class UserInfo {
+public class Offers {
 
-    @JsonProperty("persona")
-    private Persona persona;
-    @JsonProperty("userId")
-    private String userId;
+    @JsonProperty("Hotel")
+    private List<Hotel> hotel = new ArrayList<Hotel>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("persona")
-    public Persona getPersona() {
-        return persona;
+    @JsonProperty("Hotel")
+    public List<Hotel> getHotel() {
+        return hotel;
     }
 
-    @JsonProperty("persona")
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    @JsonProperty("Hotel")
+    public void setHotel(List<Hotel> hotel) {
+        this.hotel = hotel;
     }
 
-    public UserInfo withPersona(Persona persona) {
-        this.persona = persona;
-        return this;
-    }
-
-    @JsonProperty("userId")
-    public String getUserId() {
-        return userId;
-    }
-
-    @JsonProperty("userId")
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public UserInfo withUserId(String userId) {
-        this.userId = userId;
+    public Offers withHotel(List<Hotel> hotel) {
+        this.hotel = hotel;
         return this;
     }
 
@@ -73,14 +57,14 @@ public class UserInfo {
         this.additionalProperties.put(name, value);
     }
 
-    public UserInfo withAdditionalProperty(String name, Object value) {
+    public Offers withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(persona).append(userId).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(hotel).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -88,11 +72,11 @@ public class UserInfo {
         if (other == this) {
             return true;
         }
-        if ((other instanceof UserInfo) == false) {
+        if ((other instanceof Offers) == false) {
             return false;
         }
-        UserInfo rhs = ((UserInfo) other);
-        return new EqualsBuilder().append(persona, rhs.persona).append(userId, rhs.userId).append(additionalProperties, rhs.additionalProperties).isEquals();
+        Offers rhs = ((Offers) other);
+        return new EqualsBuilder().append(hotel, rhs.hotel).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }
