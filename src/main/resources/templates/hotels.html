@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default}">
+
+<div layout:fragment="content">
+
+	<div class="my-3 p-3 bg-white rounded shadow-sm">
+		<h6 class="border-bottom border-gray pb-2 mb-0">Hotels</h6>
+
+
+		<div class="media text-muted pt-3"
+			th:if="${!hotelDeal.offers.hotel.empty}"
+			th:each="hotel : ${hotelDeal.offers.hotel}">
+
+			<img th:src="${hotel.hotelInfo.hotelImageUrl}" alt=""
+				class="mr-2 rounded">
+			<div
+				class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+
+				<div class="d-flex justify-content-between align-items-top w-100">
+					<span class="d-block"> <a href="#" target="_blank"  th:onclick="|openHotelSite('${hotel.hotelUrls.hotelInfositeUrl}')|"><strong
+							class="text-gray-dark" th:text="${hotel.hotelInfo.hotelName}"></strong></a>
+						<br /> <label
+						th:text="'Located in &nbsp;'+${hotel.hotelInfo.hotelLongDestination} + ',&nbsp; address &nbsp;' + ${hotel.hotelInfo.hotelStreetAddress}"></label>
+						<br /> <label
+						th:text="'Offer for &nbsp;' + ${hotel.offerDateRange.lengthOfStay}
+				+'&nbsp;day(s) starting from &nbsp;'+${hotel.offerDateRange.travelStartDate} + ',&nbsp; till&nbsp;&nbsp;' +${hotel.offerDateRange.travelEndDate}"></label>
+						<br /> <label
+						th:text="'Total Review &nbsp;'+${hotel.hotelInfo.hotelReviewTotal}"></label>
+
+
+					</span> <span class="d-block"> <strong class="text-gray-dark"
+						th:text="'original price &nbsp;' + ${hotel.hotelPricingInfo.originalPricePerNight}"></strong>
+						<br /> <strong class="text-gray-dark"
+						th:text="'new price &nbsp;' + ${hotel.hotelPricingInfo.averagePriceValue} +'&nbsp;'+ ${hotel.hotelInfo.hotelCountryCode}"></strong>
+						<br /> <strong class="text-gray-dark"
+						th:text="'Savings&nbsp;' + ${hotel.hotelPricingInfo.percentSavings} + '&nbsp;%'"></strong>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="media text-muted pt-3"
+			th:if="${hotelDeal.offers.hotel.empty}">
+			<div
+				class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
+				align="center">
+				<span class="d-block"><strong class="text-gray-dark">No
+						Data Found</strong></span>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="myModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Event</h4>
+				</div>
+				<div class="modal-body">
+					<p>Loading...</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

@@ -92,7 +92,7 @@ public class HotelServiceTest {
 
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 
-		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
+		HotelDeal expectedHotelDeal = defaultHotelService.findHotels(searchCriteria);
 		Mockito.verify(restTemplate).getForObject(uriWithParam, HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
@@ -109,7 +109,7 @@ public class HotelServiceTest {
 
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 
-		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
+		HotelDeal expectedHotelDeal = defaultHotelService.findHotels(searchCriteria);
 		Mockito.verify(restTemplate).getForObject(uriWithParam, HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());
@@ -127,7 +127,7 @@ public class HotelServiceTest {
 
 		Mockito.when(restTemplate.getForObject(Mockito.anyString(), Mockito.any())).thenReturn(hotelDeal);
 
-		HotelDeal expectedHotelDeal = defaultHotelService.findByCriteria(searchCriteria);
+		HotelDeal expectedHotelDeal = defaultHotelService.findHotels(searchCriteria);
 		Mockito.verify(restTemplate).getForObject(uriWithParam, HotelDeal.class);
 
 		Assert.assertEquals(1, expectedHotelDeal.getOffers().getHotel().size());

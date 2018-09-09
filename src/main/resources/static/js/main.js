@@ -53,3 +53,8 @@ $('#destinationName').on(
 				return false;
 			}
 });
+
+
+function openHotelSite(url){
+	window.open(decodeURIComponent(url));
+}

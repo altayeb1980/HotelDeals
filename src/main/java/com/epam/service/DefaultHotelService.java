@@ -25,7 +25,7 @@ public class DefaultHotelService implements HotelService {
 	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Override
-	public HotelDeal findByCriteria(SearchCriteria searchCriteria) {
+	public HotelDeal findHotels(SearchCriteria searchCriteria) {
 		buildUriWithNeededParams(searchCriteria);
 		String uriWithParam = buildUriWithNeededParams(searchCriteria);
 		HotelDeal hotelDeal = restTemplate.getForObject(uriWithParam, HotelDeal.class);
