@@ -1,3 +1,5 @@
+.mvn/
+.mvnw.*
 *.class
 target/
 .settings/
