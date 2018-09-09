@@ -1,0 +1,36 @@
+language: java
+jdk: oraclejdk8
+
+install: true
+script: mvn install
+
+branches:
+  except:
+    - gh-pages
+
+#after_success:
+#- pwd
+#- mkdir $HOME/buildApk/
+#- ls -l
+#- cd $HOME/buildApk/
+#- pwd
+#- ls -l
+#- git config --global user.email "loay.saada@gmail.com"
+#- git config --global user.name "Altayeb Saadeh"
+##- git clone --depth=50 --branch=master https://github.com/altayeb1980/HotelDeals.git
+#- cd HotelDeals
+#- ls -l
+#- cp -r /home/travis/build/altayeb1980/HotelDeals/target $HOME/buildApk/HotelDeals
+#- ls -l
+#- git add -f .
+#- git remote rm origin
+#- git remote add origin https://altayeb1980:$GTIHUB_API_KEY@github.com/altayeb1980/HotelDeals.git
+#- git add -f .
+#- git commit -m "Travis Build $TRAVIS_BUILD_NUMBER pushed"
+#- git push -fq origin master
+#- echo -e "done magic\n" 
+
+
+
+
+
