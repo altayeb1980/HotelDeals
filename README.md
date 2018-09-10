@@ -3,7 +3,7 @@
 This application is used for connecting to JSON API and presents a bunch of Hotel deals in the UI. It exposes the actuator endpoints as well as the endpoint/findHotels, which search for a hotel based on specific criteria when it gets a Search POST request.
 
 The application up and running in Heroku, in your browser type this URL: https://hotels-deal-app.herokuapp.com/  
-The application build automatically by Travis CI latest build# 31, please check this url for latest build https://travis-ci.org/altayeb1980/HotelDeals/builds/426948512  
+The application jar build automatically by Travis CI, latest build# 31, please check this url for latest build information https://travis-ci.org/altayeb1980/HotelDeals/builds/426948512  
  
 
 
