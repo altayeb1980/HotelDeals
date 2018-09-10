@@ -1,6 +1,6 @@
 # HotelDeals Spring Boot App
 
-This application is used for connecting to JSON API and presents a bunch of Hotel deals in the UI. It exposes the actuator endpoints as well as the endpoint/findHotels, which search for a hotel based on specific criteria when it gets a Search POSTrequest.
+This application is used for connecting to JSON API and presents a bunch of Hotel deals in the UI. It exposes the actuator endpoints as well as the endpoint/findHotels, which search for a hotel based on specific criteria when it gets a Search POST request.
 
 The application up and running in Heroku, in your browser type this URL: https://hotels-deal-app.herokuapp.com/
  
@@ -8,10 +8,11 @@ The application up and running in Heroku, in your browser type this URL: https:/
 
 ## Instructions for setting the site up in a local sandbox
 
-The application can be run locally in two ways Docker and standalone
+The application can be run locally in two ways Docker or standalone, please note i am assuming your sandbox is windows OS.
 
 
 ## Instructions for setting the site up by Docker
+
 Make sure the docker container install in your windows machine, I try this docker image in docker window  
 
 Type docker ps to make sure the container up and running   
@@ -32,15 +33,15 @@ cd HotelDeals, so the current working directory should be like this
 
 C:\>expedia>HotelDeals>  
 
-Type dir you should see the list of files and folders listed with Dockerfile as well  
+Type dir you should see list of files and folders listed and the Dockerfile one of them  
 
 Type docker build -t hotel-deal .  
 
-The image should be created, it will take a time during installation of the OpenJDK, at the end of creation for the image you should get the message "Successfully built".  
+The image should be created, it will take a time during installation of the OpenJDK, at the end of creation for the image you should get this message "Successfully built" which indicate the image build successfully and ready to work on it.  
 
-Type docker images  
+List the images by type docker images  
 
-hotel-deal should be listed.  
+You should see hotel-deal in the list of images.  
 
 Type docker run -p 9090:9090 -t hotel-deal  
 
@@ -48,7 +49,7 @@ Tomcat should start running with 9090 port.
 
 To check if the application runs correctly please type: curl http://localhost:9090/actuator/health or by browser just put the URL, you should receive message {"status":"UP"}, means the application is up.  
 
-To enter to the application type http://localhost:9090 in your browser  
+To start working in the application type http://localhost:9090 in your browser  
 
 
 
