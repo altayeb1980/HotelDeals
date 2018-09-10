@@ -9,14 +9,13 @@ cache:
   - $HOME/.m2
 
 deploy:
-  -
-    on:
-      branch: release
-    provider: bintray
+    provider: releases
     skip_cleanup: true
-    file: target/bin/bintray.json
-    user: altayeb1980
-    key: $GITHUB_API_KEY
+    file: target/
+    api_key: $GITHUB_API_KEY
+    on:
+      tags: true
+    
 
 
 
