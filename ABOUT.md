@@ -11,7 +11,7 @@
 
 ## What i learn
 
-bootstrap and thymeleaf and also how to connect to JSON API by using spring boot and the most important this deploy the application to Heroku and also build the jar automatically by Travis CI after each push to the github.
+bootstrap and thymeleaf and also how to connect to JSON API by using spring boot and the most important thing how to deploy the application to Heroku and also build the jar automatically by Travis CI after each push to the github.
 
 
 ## What i want to accomplish for this project:
