@@ -20,7 +20,7 @@ after_success:
  - ls -l
  - git add -f .
  - git remote rm origin
- - git remote add origin https://altayeb1980:$GTIHUB_API_KEY@github.com/altayeb1980/HotelDeals.git
+ - git remote add origin https://$GTIHUB_API_KEY@github.com/altayeb1980/HotelDeals.git
  - git add -f .
  - git commit -m "Travis Build $TRAVIS_BUILD_NUMBER pushed"
  - git push -fq origin master
