@@ -1,5 +1,5 @@
 
-Technology used for HotelDeals task:
+# Technology used for HotelDeals project:
 
 Java8 as a programming language
 Spring Boot-2.0.4 as a backend
@@ -8,9 +8,12 @@ Junit 4 and Mockito
 Docker container to run the application
 Heroku
 
-I learn from this project bootstrap and thymeleaf and also i learn how to connect to JSON API by using spring boot and the most important this the heroku.
+## What i learn
 
-What i want to accomplish for this project the followng:
+bootstrap and thymeleaf and also how to connect to JSON API by using spring boot and the most important this deploy the application to heroku.
+
+
+## What i want to accomplish for this project:
 
 I tested the backend with unit and mockito only, i want to ensure the behavior for the frontend by simulating the actual
 end user interacting with the page in the web browser (clicking buttons and links,
