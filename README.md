@@ -20,10 +20,10 @@ cd expedia
 C:\>expedia>  
 Clone the project by type git clone https://github.com/altayeb1980/HotelDeals.git  
 After the clone finish successfully new folder should be created with name HotelDeals, navigate inside this folder by type  
-cd HotelDeals, so the current work directory should be like this  
+cd HotelDeals, so the current working directory should be like this  
 C:\>expedia>HotelDeals>  
 Type dir you should see list of files and folders listed with Dockerfile as well  
-Type C:\>expedia>HotelDeals>docker build -t hotel-deal .  
+Type docker build -t hotel-deal .  
 The image should be created, it will take a time durring instalation the openJdk, at the end of creation for the image you should get message "Successfully built".  
 Type docker images  
 hotel-deal should be listed.  
@@ -45,9 +45,9 @@ cd HotelDeals, so the current work directory should be like this
 C:\>expedia>HotelDeals>  
 Type dir you should see list of files and folders listed with target folder as well  
 Type cd target  
-C:\>expedia>HotelDeals>target  
+C:\>expedia>HotelDeals>cd target    
 Type dir  
-The jar name should be listed "hotel-deals-1.0.0"  
+The jar name should be listed inside target folder with name "hotel-deals-1.0.0"  
 Type java -jar hotel-deals-1.0.0  
 Tomcat should start running with 9090 port.  
 To check if the application run correctly please type: curl http://localhost:9090/actuator/health or by browser just put the url, you should receive message {"status":"UP"}, means the application is up.  
