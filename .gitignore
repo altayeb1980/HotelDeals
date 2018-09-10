@@ -1,11 +1,11 @@
 .mvn/
 .mvnw.*
 *.class
-target/
 .settings/
 .project
 .classpath
 hs_err_pid*
 .idea/
 *.iml
+target/*
 !target/hotel-deals-1.0.0.jar
