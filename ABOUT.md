@@ -15,14 +15,14 @@ bootstrap and thymeleaf and also how to connect to JSON API by using spring boot
 
 ## What i want to accomplish for this project:
 
-I tested the backend with unit and mockito only, i want to ensure the behavior for the frontend by simulating the actual
-end user interacting with the page in the web browser (clicking buttons and links,
-filling in and submitting forms, and so on). For that, i want to write acceptance tests using
-Selenium.
+I test the backend service by using unit and mockito only, i want to ensure the behavior of the frontend by simulating the actual
+end user interacting with the pages in the web browser (clicking buttons and links,
+filling in and submitting forms, and so on). 
+For that reason, i want to write acceptance tests using selenium.
 
-Connect my project to travis CI, i want to give the ability after each push to the github the build deployed automatically to target folder on the github.
+Continuous Integration by connect the project to travis CI, i want to have the ability after each push to the github the build deployed automatically to the target folder on the github.
 
-for heroku i deploy the build by steps manually, i want the build to deployed auomatically to the heroku by usoing the travisCI as well.
+Deployed the project to heroku by using the travis CI.
 
 
 
