@@ -10,17 +10,24 @@ Heroku
 
 ## What i learn
 
-bootstrap and thymeleaf and also how to connect to JSON API by using spring boot and the most important this deploy the application to heroku.
+bootstrap and thymeleaf and also how to connect to JSON API by using spring boot and the most important this deploy the application to Heroku.
 
 
 ## What i want to accomplish for this project:
 
-I test the backend service by using unit and mockito only, i want to ensure the behavior of the frontend by simulating the actual
-end user interacting with the pages in the web browser (clicking buttons and links,
-filling in and submitting forms, and so on). 
-For that reason, i want to write acceptance tests using selenium.
+I test the backend service by using unit and mockito only, I want to ensure the behavior of the frontend by simulating the actual
 
-Continuous Integration by connect the project to travis CI, i want to have the ability after each push to the github the build deployed automatically to the target folder on the github.
+end user interacting with the pages in the web browser (clicking buttons and links,
+
+filling in and submitting forms, and so on). 
+
+For that reason, I want to write acceptance tests using selenium.
+
+
+
+Continuous Integration by connecting the project to Travis CI, I want to have the ability after each push to the GitHub the build deployed automatically to the target folder on the GitHub.
+
+
 
 Deployed the project to heroku by using the travis CI.
 
