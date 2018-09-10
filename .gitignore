@@ -8,3 +8,4 @@ target/
 hs_err_pid*
 .idea/
 *.iml
+!target/hotel-deals-1.0.0.jar
