@@ -16,13 +16,13 @@ Make sure the docker container install in your windows machine, I try this docke
 
 Type docker ps to make sure the container up and running   
 
-Create a folder in your machine with name Expedia and let's assume this folder located in c:\  
+Create a folder in your machine with name expedia and let's assume this folder located in c:\  
 
-C:\mkdir Expedia  
+C:\mkdir expedia  
 
-cd Expedia  
+cd expedia  
 
-C:\> Expedia >  
+C:\>expedia>  
 
 Clone the project by type git clone https://github.com/altayeb1980/HotelDeals.git  
 
@@ -53,13 +53,13 @@ To enter to the application type http://localhost:9090 in your browser
 
 
 ## Instructions for setting the site up by stnadalone
-Create a folder in your machine with name Expedia and let's assume this folder located in c:\  
+Create a folder in your machine with name expedia and let's assume this folder located in c:\  
 
-C:\mkdir Expedia  
+C:\mkdir expedia  
 
-cd Expedia  
+cd expedia  
 
-C:\> Expedia >  
+C:\>expedia >  
 
 Clone the project by type git clone https://github.com/altayeb1980/HotelDeals.git  
 
