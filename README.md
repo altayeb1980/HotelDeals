@@ -8,7 +8,7 @@ The application up and running in heroku, in your browser type this url: https:/
 
 ## Instructions for setting the site up in a local sandbox
 
-The application based on two ways Docker and standalone
+The application can be run locally in two ways Docker and standalone
 
 
 ## Instructions for setting the site up by Docker
