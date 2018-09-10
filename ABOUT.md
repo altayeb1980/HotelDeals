@@ -20,7 +20,7 @@ bootstrap and thymeleaf and also how to connect to JSON API by using spring boot
   For that reason, I want to write acceptance tests using selenium.
 
 
-* Continuous Integration by connecting the project to Travis CI, I want to have the ability after each push to the GitHub the build    
+* Continuous Integration by connecting the project to Travis CI, I want to have the ability after each push to the GitHub the build  
   deployed automatically to the target folder on the GitHub.
 
 
