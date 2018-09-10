@@ -12,6 +12,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.expedia.model.HotelDeal;
 import com.expedia.model.SearchCriteria;
 
+/**
+ * 
+ * @author Al-Tayeb_Saadeh
+ *
+ */
 @Service
 public class DefaultHotelService implements HotelService {
 
