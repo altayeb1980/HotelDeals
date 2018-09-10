@@ -3,7 +3,7 @@
 This application is used for connect to JSON Api and presents a bunch of Hotel deals in the UI. It exposes the `actuator` endpoints as well as the `/findHotels` endpoint, which search for a hotel based on specifiec criteria when it gets a Search `POST` request.
 
 
-Check the application by type in your browser this url: https://hotels-deal-app.herokuapp.com/
+The application up and running in heroku, in your browser type this url: https://hotels-deal-app.herokuapp.com/  
 
 
 ## Instructions for setting the site up in a local sandbox
