@@ -12,10 +12,13 @@ The application based on two ways Docker and standalone
 
 
 ## Instructions for setting the site up by Docker
-create folder in your machine with any name you prefer and let's say the folder name is expedia and this folder located in c:\ directory
-C:\mkdir expedia
-cd expedia
-C:\>expedia>
+Make sure the docker container install in your windows machine, i try this docker image in docker window  
+Type docker ps to make sure the container up and running   
+Create folder in your machine with name expedia and let's assume this folder located in c:\  
+C:\mkdir expedia  
+cd expedia  
+C:\>expedia>  
+Clone the project by type git clone 
 after you clone the project new folder shopuld be create with name HotelDeals, navigate inside the folder by type cd HotelDeals, so the current work directory should be luke this
 C:\>expedia>HotelDeals>
 Type dir you should see Dockerfile listed
