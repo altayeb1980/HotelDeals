@@ -29,7 +29,6 @@ after_success:
 - git add -f .
 - git commit -m "Travis Build $TRAVIS_BUILD_NUMBER pushed"
 - git push -fq origin master
-- echo -e "done magic\n" 
 
 
  #/home/travis/build/altayeb1980/HotelDeals/target/hotel-deals-1.0.0.jar
