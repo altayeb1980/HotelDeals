@@ -18,7 +18,23 @@ cd expedia
 C:\>expedia>
 after you clone the project new folder shopuld be create with name HotelDeals, navigate inside the folder by type cd HotelDeals, so the current work directory should be luke this
 C:\>expedia>HotelDeals>
-if you type dir you will see the below files and folders
+Type dir you should see Dockerfile listed
+Type docker ps in order to make sure the docker container run locally.
+Type docker build -t hotel-deal .
+the image should be created, it will take a time durring install the openJdk, and the end you should get Successfully built.
+Type docker images
+hotel-deal should be listed.
+Type docker run -p 9090:9090 -t hotel-deal
+you should see the tomcat start running with 9090 port.
+To check if the application run correctly please type: curl http://localhost:9090/actuator/health or by browser just put the url, you should see {"status":"UP"}, means the application ready and up.
+to enter to the application type http://localhost:9090
+
+
+
+## Instructions for setting the site up by stnadalone
+
+
+
 
 
 
