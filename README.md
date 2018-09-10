@@ -47,7 +47,7 @@ Type dir you should see list of files and folders listed with target folder as w
 Type cd target  
 C:\>expedia>HotelDeals>cd target    
 Type dir  
-The jar name should be listed inside target folder with name "hotel-deals-1.0.0"  
+The jar name should be listed inside target folder with name "hotel-deals-1.0.0.jar"  
 Type java -jar hotel-deals-1.0.0  
 Tomcat should start running with 9090 port.  
 To check if the application run correctly please type: curl http://localhost:9090/actuator/health or by browser just put the url, you should receive message {"status":"UP"}, means the application is up.  
